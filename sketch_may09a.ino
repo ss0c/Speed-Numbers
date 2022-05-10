@@ -2,10 +2,14 @@
 
 LiquidCrystal_I2C lcd(0x27,16,2);
 
-int a = 8;
-int b = 8;
-int c = 8;
-int d = 8;
+
+int a = 0;
+int b = 0;
+int c = 0;
+int d = 0;
+int p = 0;
+
+
 
 void setup() {
 
@@ -18,19 +22,18 @@ void setup() {
 
 void loop() {
   
-  int a = 0;
-  int b = 0;
-  int c = 0;
-  int d = 0;
-
+  
   randomEasy(a,b);
-
-  c = a + b;
 
   Serial.println(a);
   Serial.println(b);
+
+  c = a + b;
+
+  
   Serial.println(c);
   Serial.println(d);
+  Serial.println(p);
 
   while(true){
 
@@ -39,13 +42,14 @@ void loop() {
 
       if(d == c){
         lcd.clear();
-        lcd.print("Nashei");  
+        lcd.print("Correcto");  
         delay(350);
+        p++;
         break;
       }
       else{
         lcd.clear();
-        lcd.print("MALARDO");
+        lcd.print("Incorrecto");
         delay(430);
         break;
       }
