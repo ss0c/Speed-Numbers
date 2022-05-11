@@ -3,11 +3,11 @@
 LiquidCrystal_I2C lcd(0x27,16,2);
 
 
-int a = 0;
-int b = 0;
-int c = 0;
-int d = 0;
-int p = 0;
+
+int a; // Numero random
+int b; // Numero random
+int c; // Resultado de los dos numeros random
+int d;
 
 
 
@@ -21,30 +21,26 @@ void setup() {
 }
 
 void loop() {
+ 
+  randomEasy();
   
+  // Serial.println(a);
+  // Serial.println(b);
   
-  randomEasy(a,b);
-
-  Serial.println(a);
-  Serial.println(b);
-
   c = a + b;
-
+  // Serial.println(c);
   
-  Serial.println(c);
-  Serial.println(d);
-  Serial.println(p);
-
+  Serial.print(d); 
+  
   while(true){
 
     if(Serial.available()> 0){
-      int d = Serial.read();
+      d = Serial.read();
 
       if(d == c){
         lcd.clear();
         lcd.print("Correcto");  
         delay(350);
-        p++;
         break;
       }
       else{
@@ -59,7 +55,7 @@ void loop() {
 
 
 
-int randomEasy(int a,int b){
+void randomEasy(){
   a = random(0,5);
   b = random(0,5);
 
@@ -77,6 +73,5 @@ int randomEasy(int a,int b){
   lcd.setCursor(0,1);
   lcd.blink();
 
-  return a;
-  return b;
+
 }
